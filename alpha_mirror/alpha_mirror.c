@@ -6,12 +6,11 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:29:42 by elichan           #+#    #+#             */
-/*   Updated: 2024/02/14 12:23:17 by elichan          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:50:54 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
 
 void	ft_putchar(char c)
 {
@@ -26,7 +25,7 @@ void	alpha_mirror(char *str)
 	while (str[i])
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
-			ft_putchar('z' - (str[i] -'a'));
+			ft_putchar('z' - (str[i] - 'a'));
 		else if (str[i] >= 'A' && str[i] <= 'Z')
 			ft_putchar('Z' - (str[i] - 'A'));
 		else

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_bits.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 16:14:01 by elichan           #+#    #+#             */
-/*   Updated: 2024/02/14 14:47:46 by elichan          ###   ########.fr       */
+/*   Created: 2024/02/14 16:07:15 by elichan           #+#    #+#             */
+/*   Updated: 2024/02/14 16:12:48 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-unsigned char	swap_bits(unsigned char octet)
+int	ft_atoi(char *s)
 {
-	return ((octet >> 4) | (octet << 4));
-}
+	int	res;
+	int	sign;
 
-int	main(void)
-{
-	char	c;
+	res = 0;
+	sign = 1;
 
-	c = 't';
-	write(1, &c, 1);
-	c = swap_bits(c);
-	write(1, &c, 1);
-	return (0);
+	while (*s == ' ' || (*s >= 9 && *s <= 13))
+	s++;
+	if (*s == '-')
+		sign = -1;
+	if (*s == '-' || *s == '+')
+		s++;
+	while (*s >= '0' && *s <= '9')
+	{
+		res = res * 10 + *s - '0';
+		s++;
+	}
+	return (sign * res);
 }

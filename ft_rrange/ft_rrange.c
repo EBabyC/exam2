@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elichan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:21:10 by elichan           #+#    #+#             */
-/*   Updated: 2024/01/02 16:27:19 by elichan          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:47:30 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 int	*ft_rrange(int start, int end)
 {
 	int	i;
-	int	*rrange;
+	int	*range;
+	int	n;
 
 	if (start > end)
-		rrange = (int *)malloc(sizeof(int) * (start - end) + 1);
-	else
-		rrange = (int *)malloc(sizeof(int) * (end - start) + 1);
-	i = 0;
-	while (start != end)
+		return (ft_rrange(end, start));
+	n = end - start + 1;
+	range = (int *)malloc(sizeof(int) * n);
+	if (range)
 	{
-		rrange[i++] = end;
-		end -= (start > end) ? -1 : 1;
+		while (i < n)
+		{
+			range[i] = start;
+			start++;
+			i++;
+		}
 	}
-	rrange[i] = end;
 	return (rrange);
 }

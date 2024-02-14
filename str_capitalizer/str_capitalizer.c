@@ -6,7 +6,7 @@
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:03:18 by elichan           #+#    #+#             */
-/*   Updated: 2023/12/29 16:22:05 by elichan          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:42:36 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putchar(char c)
 int	is_sep(char c)
 {
 	if (c == '\t' || c == '\n'
-		|| c == ' ' || c == '\v' || c == '\f' || c =='\r')
+		|| c == ' ' || c == '\v' || c == '\f' || c == '\r')
 		return (1);
 	else
 		return (0);

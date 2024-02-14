@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_bits.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 16:14:01 by elichan           #+#    #+#             */
-/*   Updated: 2024/02/14 14:47:46 by elichan          ###   ########.fr       */
+/*   Created: 2024/02/14 16:20:29 by elichan           #+#    #+#             */
+/*   Updated: 2024/02/14 16:32:29 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-unsigned char	swap_bits(unsigned char octet)
+int	*ft_range(int start, int end)
 {
-	return ((octet >> 4) | (octet << 4));
-}
+	int	*range;
+	int	i;
 
-int	main(void)
-{
-	char	c;
-
-	c = 't';
-	write(1, &c, 1);
-	c = swap_bits(c);
-	write(1, &c, 1);
-	return (0);
+	if (start > end)
+		range = (int *)malloc(sizeof(int) * (start - end) + 1);
+	else
+		range = (int *)malloc(sizeof(int) * (end - start) + 1);
+		i = 0;
+	while (start != end)
+	{
+		range[i++] = start;
+		start += (start > end) ? -1 : 1;
+	}
+	range[i] = start;
+	return (range);
 }

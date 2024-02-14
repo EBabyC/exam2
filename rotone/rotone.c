@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_bits.c                                        :+:      :+:    :+:   */
+/*   rotone.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 16:14:01 by elichan           #+#    #+#             */
-/*   Updated: 2024/02/14 14:47:46 by elichan          ###   ########.fr       */
+/*   Created: 2024/02/14 15:12:24 by elichan           #+#    #+#             */
+/*   Updated: 2024/02/14 15:24:06 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-unsigned char	swap_bits(unsigned char octet)
+void	ft_putchar(char c)
 {
-	return ((octet >> 4) | (octet << 4));
+	write (1, &c, 1);
 }
 
-int	main(void)
+void	rotone(char *s)
 {
-	char	c;
+	while (*s)
+	{
+		if ((*s >= 'A' && *s <= 'Y') || (*s >= 'a' && *s <= 'y'))
+			ft_putchar(*s + 1);
+		else if (*s == 'z' || *s == 'Z')
+			ft_putchar(*s - 25);
+		else
+			ft_putchar(*s);
+		s++;
+	}
+}
 
-	c = 't';
-	write(1, &c, 1);
-	c = swap_bits(c);
-	write(1, &c, 1);
+int	main(int ac, char **av)
+{
+	if (ac == 2)
+		rotone(av[1]);
+	ft_putchar('\n');
 	return (0);
 }
+
