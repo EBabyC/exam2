@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_capitalizer.c                                  :+:      :+:    :+:   */
+/*   alpha_mirror.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elichan < elichan@student.42.fr >          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 16:03:18 by elichan           #+#    #+#             */
-/*   Updated: 2023/12/29 16:22:05 by elichan          ###   ########.fr       */
+/*   Created: 2024/02/13 16:29:42 by elichan           #+#    #+#             */
+/*   Updated: 2024/02/14 12:23:17 by elichan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int	is_sep(char c)
-{
-	if (c == '\t' || c == '\n'
-		|| c == ' ' || c == '\v' || c == '\f' || c =='\r')
-		return (1);
-	else
-		return (0);
-}
-
-void	ft_str_capitalizer(char *str)
+void	alpha_mirror(char *str)
 {
 	int	i;
 
-	if (str[0] >= 'a' && str[0] <= 'z')
-		ft_putchar(str[0] - 32);
-	else
-		ft_putchar(str[0]);
-	i = 1;
+	i = 0;
 	while (str[i])
 	{
-		if ((str[i] >= 'a' && str[i] <= 'z')
-			&& is_sep(str[i - 1]))
-			ft_putchar(str[i] - 32);
-		else if ((str[i] >= 'A' && str[i] <= 'Z')
-			&& !is_sep(str[i - 1]))
-			ft_putchar(str[i] + 32);
+		if (str[i] >= 'a' && str[i] <= 'z')
+			ft_putchar('z' - (str[i] -'a'));
+		else if (str[i] >= 'A' && str[i] <= 'Z')
+			ft_putchar('Z' - (str[i] - 'A'));
 		else
 			ft_putchar(str[i]);
 		i++;
@@ -53,12 +39,9 @@ int	main(int ac, char **av)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
-	{
-		ft_str_capitalizer(av[i]);
-		ft_putchar('\n');
-		i++;
-	}
+	i = 0;
+	if (ac == 2)
+		alpha_mirror(av[1]);
+	write (1, "\n", 1);
 	return (0);
-}		
+}
